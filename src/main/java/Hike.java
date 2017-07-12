@@ -57,4 +57,15 @@ public class Hike {
       return con.createQuery(sql).executeAndFetch(Hike.class);
     }
   }
+
+  public static Hike find(int id) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM hikes where id=:id";
+      Hike hike = con.createQuery(sql)
+        .addParameter("id", id)
+        .executeAndFetchFirst(Hike.class);
+      return hike;
+    }
+  }
+
 }

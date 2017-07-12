@@ -50,4 +50,13 @@ public class HikeTest {
     Hike savedHike = Hike.all().get(0);
     assertEquals(myHike.getId(), savedHike.getId());
   }
+
+  @Test
+  public void find_returnsHikeWithSameId_secondHike() {
+    Hike firstHike = new Hike("Piss Point", testDescription, 1);
+    firstHike.save();
+    Hike secondHike = new Hike("AA Trail", testDescription, 1);
+    secondHike.save();
+    assertEquals(Hike.find(secondHike.getId()), secondHike);
+  }
 }
