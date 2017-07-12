@@ -1,3 +1,19 @@
 <!-- hike-form.vtl -->
 hike-form.vtl works
+<p>Add a new task:</p>
+
+
+<form action="/hikes" method="post">
+  <div class="form-group">
+    <label for="name">Please name your hike</label>
+    <input id="name" name="name" type="text">
+  </div>
+
+  <div class="form-group">
+    <label for="description">Hike Description</label>
+    <textarea id="description" name="description" rows="7"></textarea>
+  </div>
+  <button type="submit" class="btn btn-default">Add Hike</button>
+</form>
+
 <!-- hike-form.vtl -->
