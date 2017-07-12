@@ -34,4 +34,31 @@ public class StateTest {
     assertTrue(firstState.equals(secondState));
   }
 
+  @Test
+  public void all_returnsAllInstancesOfState_true() {
+    State firstState = new State("Washington");
+    firstState.save();
+    State secondState = new State("Oregon");
+    secondState.save();
+    assertEquals(true, State.all().get(0).equals(firstState));
+    assertEquals(true, State.all().get(1).equals(secondState));
+  }
+
+  @Test
+  public void find_returnsStateWithSameId_secondState() {
+    State firstState = new State("Washington");
+    firstState.save();
+    State secondState = new State("Oregon");
+    secondState.save();
+    assertEquals(State.find(secondState.getId()), secondState);
+  }
+
+  @Test
+  public void findDuplicate_returnsIDIfStateNamesAreSame() {
+    State testState = new State("Washington");
+    testState.save();
+    String testString = "Washington";
+    assertEquals(State.all().get(0).getId(), testState.findDuplicate("Washington"));
+  }
+
 }

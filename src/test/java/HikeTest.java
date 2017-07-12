@@ -36,12 +36,15 @@ public class HikeTest {
     assertTrue(firstHike.equals(secondHike));
   }
 
-  public static List<Hike> all() {
-     String sql = "SELECT id, name, description, stateId FROM hikes";
-     try(Connection con = DB.sql2o.open()) {
-       return con.createQuery(sql).executeAndFetch(Hike.class);
-     }
-   }
+  @Test
+  public void all_returnsAllInstancesOfHike_true() {
+    Hike firstHike = new Hike("Piss Point", testDescription, 1);
+    firstHike.save();
+    Hike secondHike = new Hike("AA Trailhead", testDescription, 1);
+    secondHike.save();
+    assertEquals(true, Hike.all().get(0).equals(firstHike));
+    assertEquals(true, Hike.all().get(1).equals(secondHike));
+  }
 
   @Test
   public void save_assignsIdToObject() {
@@ -58,5 +61,10 @@ public class HikeTest {
     Hike secondHike = new Hike("AA Trail", testDescription, 1);
     secondHike.save();
     assertEquals(Hike.find(secondHike.getId()), secondHike);
+  }
+
+  @Test
+  public void isDuplicate_returnsTrueIfStateNamesAreSame() {
+
   }
 }

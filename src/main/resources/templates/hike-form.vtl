@@ -1,9 +1,13 @@
 <!-- hike-form.vtl -->
 hike-form.vtl works
-<p>Add a new task:</p>
-
-
-<form action="/hikes" method="post">
+<p>Add a new State:</p>
+<form action="/hikes-states" method="post" >
+  <select name="state">
+    <option value="Washington">Washington</option>
+    <option value="Oregon">Oregon</option>
+    <option value="Idaho">Idaho</option>
+    <option value="California">California</option>
+  </select>
   <div class="form-group">
     <label for="name">Please name your hike</label>
     <input id="name" name="name" type="text">

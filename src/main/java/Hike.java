@@ -8,10 +8,10 @@ public class Hike {
   private int id;
   private int stateId;
 
-  public Hike(String name, String description, int id) {
+  public Hike(String name, String description, int stateId) {
     this.name = name;
     this.description = description;
-    this.id = id;
+    this.stateId = stateId;
   }
 
   public String getName() {
