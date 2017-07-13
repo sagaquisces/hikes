@@ -2,16 +2,14 @@
 <h1>Hikes List</h1>
 
 #if ($hikes)
-  <ul>
-
+  <ul class="list-group">
     #foreach ($hike in $hikes)
-      <li><a href="/states/$hike.getStateId()/hikes/$hike.getId()">$hike.getName()</a></li>
+      <li class="list-group-item"><a href="/states/$hike.getStateId()/hikes/$hike.getId()">$hike.getName()</a></li>
     #end
-
   </ul>
 #else
   <h1>No Hikes! GET YOUR DAMN BOOTS ON!</h1>
 #end
 
-<a href="/new-hike">Add a New Hike</a>
+<a href="/new-hike" class="btn btn-default" role="button">Add a hike</a>
 <!-- hikes.vtl -->

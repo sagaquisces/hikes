@@ -1,22 +1,26 @@
 <!-- hike-form.vtl -->
-<p>Add a new State:</p>
+<h2>Add a new hike:</h2>
 <form action="/hikes-states" method="post" >
-  <select name="state">
-    <option value="Washington">Washington</option>
-    <option value="Oregon">Oregon</option>
-    <option value="Idaho">Idaho</option>
-    <option value="California">California</option>
-  </select>
+  <div class="form-group">
+    <label for="state">Choose a state (select one):</label>
+    <select class="form-control" id="state" name="state">
+      <option value="Washington">Washington</option>
+      <option value="Oregon">Oregon</option>
+      <option value="Idaho">Idaho</option>
+      <option value="California">California</option>
+    </select>
+  </div>
   <div class="form-group">
     <label for="name">Please name your hike</label>
-    <input id="name" name="name" type="text">
+    <input class="form-control" id="name" name="name" type="text">
   </div>
 
   <div class="form-group">
     <label for="description">Hike Description</label>
-    <textarea id="description" name="description" rows="7"></textarea>
+    <textarea class="form-control" id="description" name="description" rows="5"></textarea>
   </div>
   <button type="submit" class="btn btn-default">Add Hike</button>
 </form>
+</div>
 
 <!-- hike-form.vtl -->
