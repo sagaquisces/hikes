@@ -1,8 +1,11 @@
 import org.sql2o.*;
 import org.junit.*;
 import static org.junit.Assert.*;
+import java.util.Arrays;
 
 public class StateTest {
+  String testDescription = "This is a string that contains a long string as a placeholder for a textarea that will include the description of the hike for a details page. Let's make it long and full of &*%$# characters.";
+
 
   @Rule
   public DatabaseRule database = new DatabaseRule();
@@ -59,6 +62,24 @@ public class StateTest {
     testState.save();
     String testString = "Washington";
     assertEquals(State.all().get(0).getId(), testState.findDuplicate("Washington"));
+  }
+
+  @Test
+  public void getHikes_initiallyReturnsEmptyList_ArrayList() {
+    State testState = new State("Washington");
+    assertEquals(0, testState.getHikes().size());
+  }
+
+  @Test
+  public void getHikes_retrievesAllHikesFromDatabase_hikesList() {
+    State myState = new State("Washington");
+    myState.save();
+    Hike firstHike = new Hike("Piss Point", testDescription, myState.getId());
+    firstHike.save();
+    Hike secondHike = new Hike("Pupu Point", testDescription, myState.getId());
+    secondHike.save();
+    Hike[] hikes = new Hike[] { firstHike, secondHike };
+    assertTrue(myState.getHikes().containsAll(Arrays.asList(hikes)));
   }
 
 }

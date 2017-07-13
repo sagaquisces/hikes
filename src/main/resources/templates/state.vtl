@@ -1,0 +1,8 @@
+<!-- state.vtl -->
+<h2>$state.getName()</h2>
+<ul class="list-group">
+  #foreach($hike in $state.getHikes())
+  <li class="list-group-item"><a href="/states/$state.getId()/hikes/$hike.getId()">$hike.getName()</a></li>
+  #end
+</ul>
+<!-- state.vtl -->

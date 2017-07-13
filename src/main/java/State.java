@@ -68,5 +68,12 @@ public class State {
     return matchedId;
   }
 
-
+  public List<Hike> getHikes() {
+    try(Connection con = DB.sql2o.open()) {
+    String sql = "SELECT * FROM hikes WHERE stateId=:id";
+    return con.createQuery(sql)
+      .addParameter("id", this.id)
+      .executeAndFetch(Hike.class);
+    }
+  }
 }

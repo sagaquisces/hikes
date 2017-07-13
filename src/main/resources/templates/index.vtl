@@ -1,1 +1,12 @@
 <h1>Hikes</h1>
+
+#if($states)
+  <p>Click on a state to see its hikes:</p>
+  <ul class="list-group">
+    #foreach ($state in $states)
+      <li class="list-group-item"><a href="/states/$state.getId()">$state.getName()</a></li>
+    #end
+  </ul>
+#else
+  <p>There are no states with hikes!</p>
+#end

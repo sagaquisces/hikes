@@ -13,6 +13,7 @@ public class App {
 
     get("/", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
+      model.put("states", State.all());
       model.put("template", "templates/index.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
@@ -36,6 +37,24 @@ public class App {
       Map<String, Object> model = new HashMap<String, Object>();
       Hike hike = Hike.find(Integer.parseInt(request.params(":id")));
       model.put("hike", hike);
+      model.put("template", "templates/hike.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/states/:id", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      State state = State.find(Integer.parseInt(request.params(":id")));
+      model.put("state", state);
+      model.put("template", "templates/state.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/states/:state_id/hikes/:id", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      State state = State.find(Integer.parseInt(request.params(":state_id")));
+      Hike hike = Hike.find(Integer.parseInt(request.params(":id")));
+      model.put("hike", hike);
+      model.put("state", state);
       model.put("template", "templates/hike.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
