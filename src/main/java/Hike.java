@@ -26,6 +26,10 @@ public class Hike {
     return id;
   }
 
+  public int getStateId() {
+    return stateId;
+  }
+
   public void save() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "INSERT INTO hikes(stateId, name, description) VALUES (:stateId, :name, :description);";
@@ -67,5 +71,15 @@ public class Hike {
       return hike;
     }
   }
+
+  // public String getStateName(int id) {
+  //   try(Connection con = DB.sql2o.open()) {
+  //     String sql = "SELECT name FROM states where id=:id";
+  //     String stateName = con.createQuery(sql)
+  //       .addParameter("id", id)
+  //       .executeAndFetchFirst(State.class);
+  //
+  //   }
+  // }
 
 }

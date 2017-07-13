@@ -20,6 +20,7 @@ public class App {
 
     get("/hikes", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
+      // model.put("states" ,State.all());
       model.put("hikes", Hike.all());
       model.put("template", "templates/hikes.vtl");
       return new ModelAndView(model, layout);
